@@ -6,7 +6,6 @@ const button = document.getElementById('button');
 getAdvice();
 
 async function getAdvice() {
-  eventHappening = true;
   const response = await fetch(randomAdviceUrl, {
     cache: "reload"
   });
