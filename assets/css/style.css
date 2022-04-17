@@ -45,7 +45,7 @@ body {
   max-width: 430px;
 }
 
-.adviceNumber {
+.adviceId {
   color: var(--Neon-Green);
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -81,6 +81,7 @@ body {
   position: absolute;
   padding: 3px 0 0 0;
   bottom: -30px;
+  transition: 200ms ease-in-out;
 }
 
 .button:hover {
