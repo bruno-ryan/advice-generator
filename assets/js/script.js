@@ -1,5 +1,5 @@
 const randomAdviceUrl = 'https://api.adviceslip.com/advice';
-const advice = document.getElementById('advice');
+const adviceElement = document.getElementById('advice');
 const adviceId = document.getElementById('adviceId');
 const button = document.getElementById('button');
 
@@ -7,23 +7,17 @@ getAdvice();
 
 async function getAdvice() {
   const response = await fetch(randomAdviceUrl, {
-    cache: "reload"
+    cache: "no-cache"
   });
   const data = await response.json();
   let adviceIdData = data.slip.id;
   let adviceData = data.slip.advice;
-  updateAdviceId(adviceIdData, adviceData);
-  console.log(data);
-  console.log(adviceIdData);
+  updateAdvice(adviceIdData, adviceData);
 }
 
-function updateAdviceId(id, adviceData) {
+function updateAdvice(id, advice) {
   adviceId.innerText = ` #${id}`;
-  advice.innerText = `"${adviceData}"`;
+  adviceElement.innerText = `"${advice}"`;
 }
 
-button.addEventListener('click', () => {
-  adviceId.innerText = '';
-  advice.innerText = 'Loading'
-  setTimeout(getAdvice, 1000);
-})
+button.addEventListener('click', getAdvice)
